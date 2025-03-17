@@ -1,0 +1,55 @@
+name: "assignment1-sweep"
+method: "bayes"
+program: "train.py"
+metric:
+  name: val.acc
+  goal: maximize
+parameters:
+  wandb_project:
+    value: "DA6401_Assignment1" 
+  wandb_entity:
+    value: "sjshiva8287"
+  learning_rate:  
+    distribution: uniform
+    max: 0.1
+    min: 0.001
+  batch_size:
+    values: [16,32,64, 128, 256]
+  optimizer:
+    values: ["adam", "nadam", "momentum", "sgd", "rmsprop", "nag"]
+  epochs:
+    values: [5, 10, 15]
+  num_layers:
+    values: [3, 4, 5]
+  hidden_size:
+    values: [64, 128, 256]
+  momentum:
+    distribution: uniform
+    max: 0.999
+    min: 0.01
+  beta:
+    distribution: uniform
+    max: 0.999
+    min: 0.01
+  beta1:
+    distribution: uniform
+    max: 0.999
+    min: 0.01
+  beta2:
+    distribution: uniform
+    max: 0.999
+    min: 0.01
+  epsilon:
+    distribution: uniform
+    max: 1e-2
+    min: 1e-10
+  weight_decay:
+    distribution: uniform
+    max: 1e-2
+    min: 1e-10
+  weight_init:
+    values: ["random", "xavier", "he"]
+  activation:
+    values: ["identity", "sigmoid", "tanh", "ReLU"]
+  loss:
+    values: ["cross_entropy", "mean_squared_error"]
